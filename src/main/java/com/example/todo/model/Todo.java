@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 
 @Entity(name="todolist")
 public class Todo {
-	
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
