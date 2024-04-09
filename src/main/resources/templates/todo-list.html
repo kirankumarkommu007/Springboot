@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Todo List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+
+</head>
+<body>
+	<div  class="container">
+		<h1>Todo List</h1>
+		
+		
+		
+		<table class="table table-striped">
+ 
+    <tbody>
+      <tr th:each="todo : ${todoList}">
+        <td th:text="${todo.title}"></td>
+        <td th:text="${todo.description}"></td>
+        <td th:text="${todo.completed ? 'Completed' : 'Pending'}"></td>
+        <td><a
+			 type="button" class="btn btn-primary" th:href="@{/edit/{id}(id=${todo.id})}">Edit</a></td>
+		<td> <a
+			th:href="@{/delete/{id}(id=${todo.id})}"
+			type="button" class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete this todo?')">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+	
+	<a href="/add">Add Todo</a>
+	</div>
+</body>
+</html>
